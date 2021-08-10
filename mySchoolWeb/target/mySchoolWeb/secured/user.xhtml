@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
+    <h:body>
+        <ui:composition template="/template/template.xhtml">
+            <ui:define name="maincontent">
+                <p:dataTable rendered="#{schoolUserBean.list}" value="#{schoolUserBean.systemUsers}" var="user" paginator="true" paginatorPosition="top" paginatorAlwaysVisible="false" reflow="true" rows="10">
+                    <f:facet name="header">
+                        <p:toolbar>
+                            <f:facet name="left">
+                                <b:commandButton icon-size="lg" icon-awesome="fa-plus-square-o" action="#{schoolUserBean.addorUpdate(null)}" update="@form"/>
+                            </f:facet>
+                        </p:toolbar>
+                    </f:facet>
+                    <p:column headerText="Registered Date">
+                        <h:outputText value="#{user.createdDate}">
+                            <f:convertDateTime pattern="yyyy MM dd"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Full Names">
+                        <h:outputText value="#{user.firstName} #{emp.lastName}"/>
+                    </p:column>
+                    <p:column headerText="Identity Number">
+                        <h:outputText value="#{user.identityNumber}"/>
+                    </p:column>
+                    <p:column headerText="Gender">
+                        <h:outputText value="#{user.genderType.toString()}"/>
+                    </p:column>
+                    <p:column headerText="Employee/Sudent Number">
+                        <h:outputText value="#{user.identifier}"/>
+                    </p:column>
+                    <p:column headerText="Cellphone Number">
+                        <h:outputText value="#{user.contactDetail.cellphone_number}"/>
+                    </p:column>
+                    <p:column headerText="Email Address">
+                        <h:outputText value="#{user.contactDetail.emailAddress}"/>
+                    </p:column>
+                    <p:column headerText="Action">
+                        <b:commandButton icon-size="lg" icon-awesome="pencil" action="#{schoolUserBean.addorUpdate(user)}" update="@form"/>
+                        <p:spacer width="5px"/>
+                        <b:commandButton rendered="#{activeUser.systemadmin}" icon-size="lg" icon-awesome="remove" action="#{schoolUserBean.delete(user)}" update="@form"/>
+                    </p:column>
+                </p:dataTable>
+                <b:panel rendered="#{schoolUserBean.add}" look="primary" title="System User" collapsible="false">
+                    <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                        <b:inputText value="#{schoolUserBean.systemUser.username}" label="Username" field-size="md"/>
+                        <b:inputText value="#{schoolUserBean.systemUser.password}" label="Password" field-size="md"/>
+                        <b:inputText value="#{schoolUserBean.systemUser.confirmPassword}" label="Confirm Passwords" field-size="md"/>
+                        <b:formGroup>
+                            <p:outputLabel value="SystemUser Type"/>
+                            <p:selectOneMenu label="Type" value="#{schoolUserBean.systemUser.systemUserType}" converter="entityConverter" filter="false">
+                                <p:ajax update="@form" listener="#{schoolUserBean.systemUserTypeListener}"/>
+                                <f:selectItems value="#{schoolUserBean.systemUserType}" var="userType" itemLabel="#{userType.toString()}" itemValue="#{userType}"/>
+                            </p:selectOneMenu>
+                        </b:formGroup>
+                        <b:formGroup rendered="#{schoolUserBean.visible}">
+                            <p:outputLabel value="Employee"/>                           
+                            <p:selectOneMenu value="#{schoolUserBean.systemUser.identifier}" label="Employee" filter="false">
+                                <f:selectItems value="#{schoolUserBean.employees}" var="emp" itemLabel="#{emp.firstName}#{emp.lastName}#{emp.employeeId}" itemValue="#{emp.employeeId}"/>
+                            </p:selectOneMenu>                                      
+                        </b:formGroup>
+                        <b:formGroup rendered="#{schoolUserBean.visiblePage}">
+                            <p:outputLabel value="Student"/>                           
+                            <p:selectOneMenu value="#{schoolUserBean.systemUser.identifier}" label="Student" filter="false">
+                                <f:selectItems value="#{schoolUserBean.students}" var="std" itemLabel="#{std.firstName}#{std.lastName}#{std.studentNumber}" itemValue="#{std.studentId}"/>
+                            </p:selectOneMenu>                                      
+                        </b:formGroup>
+                        <b:formGroup>
+                            <p:outputLabel value="SyatemUser Status"/>                           
+                            <p:selectOneMenu value="#{schoolUserBean.systemUser.systemUserStatus}" label="Status" converter="entityConverter" filter="false">
+                                <f:selectItems value="#{schoolUserBean.systemUserStatus}" var="userSt" itemLabel="#{userSt.toString()}" itemValue="#{userSt}"/>
+                            </p:selectOneMenu>                                      
+                        </b:formGroup>
+                    </b:panelGrid>
+                    <f:facet name="footer">
+                        <p:toolbar>
+                            <f:facet name="right">
+                                <b:commandButton size="xs" look="success" value="save" action="#{schoolUserBean.save(systemUserBean.systemUser)}" update="@form"/>
+                                <p:spacer width="15px"/>
+                                <b:commandButton size="xs" look="danger" value="cancel" action="#{schoolUserBean.cancel(systemUserBean.systemUser)}" update="@form"/>
+                            </f:facet>
+                        </p:toolbar>
+                    </f:facet>
+                </b:panel>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

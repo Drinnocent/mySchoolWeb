@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <body>
+        <ui:composition>
+            <b:row>
+                <b:column col-md="4">
+                    <p:graphicImage name="sarslogo.png" library="images" width="229" height="70"/>
+                </b:column>
+                <b:column col-md="6">
+                    <p:outputLabel value="School Management System" styleClass="headercss"/>
+                </b:column>
+                <b:column col-md="2" rendered="#{headerBean.activeUser.userLoginIndicator}">
+                    <b:row>
+                        <h:outputFormat value="[{0}{1}{2}]">
+                            <f:param value="Login As :"/>
+                            <f:param value="#{headerBean.activeUser.firstName}"/>
+                            <f:param value="#{headerBean.activeUser.lastName}"/>
+                        </h:outputFormat>
+                    </b:row>
+                    <b:row>
+                        <h:outputFormat value="">
+                            <f:param value="Status"/>
+                            <f:param value="#{headerBean.activeUser.activeStatus.toString()}"/>
+                        </h:outputFormat>
+                    </b:row>
+                    <b:row>
+                        <h:outputFormat value="">
+                            <f:param value="Username"/>
+                            <f:param value="#{headerBean.activeUser.systemUserType.toString()}"/>
+                        </h:outputFormat>
+                    </b:row>                    
+                    <b:row>
+                        <b:commandLink action="#{headerBean.logout()}" iconAwesome="fa-sign-out" value="Sign Out"/>
+                    </b:row>
+                </b:column>
+            </b:row>
+        </ui:composition>
+    </body>
+</html>
+

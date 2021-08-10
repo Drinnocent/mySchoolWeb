@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+    </h:head>
+    <h:body>
+        <ui:composition template="/template/template.xhtml">
+            <ui:define name="maincontent">
+                <b:panel look="default" collapsible="false" collapsed="false" contentStyle="text-align :center;">
+                    <p:outputLabel value="#{activeUser.moduleWelcomeMessage}" styleClass="welcome-msg-css"/>
+                </b:panel>
+                <b:panel rendered="#{activeUser.systemadmin}" look="primary" title="System Admin" collapsible="false">
+                    <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                        <p:fieldset legend="School Details" >
+                            <b:inputText label="School Name" value="#{landingBean.school.name}" readonly="true"/>
+                            <b:inputText label="Registration Number" value="#{landingBean.school.registrationNumber}" readonly="true"/>
+                            <b:inputText label="Cellphone number" value="#{landingBean.school.contact.cellphone_number}" readonly="true"/>
+                            <b:inputText label="Telephone Number" value="#{landingBean.school.contact.tellphone_number}" readonly="true"/>
+                            <b:inputText label="Eamil Address" value="#{landingBean.school.contact.emailAddress}" readonly="true"/>
+                        </p:fieldset>
+                    </b:panelGrid>
+                    <p:dataGrid value="#{landingBean.school.address}" var="address" columns="2">
+                        <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                            <p:fieldset legend="#{address.addressType.toString()}" >
+                                <b:inputText label="Address Line 1" value="#{address.addressLine1}" field-size="md" readonly="true" />
+                                <b:inputText label="Address Line 2" value="#{address.addressLine2}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Street" value="#{address.street}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Area" value="#{address.area}"  field-size="md"  readonly="true"/>
+                                <b:inputText label="Code" value="#{address.code}"   field-size="md" readonly="true"/>
+                            </p:fieldset>
+                        </b:panelGrid>
+                    </p:dataGrid>
+                    <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                        <p:fieldset legend="Personal Information" >
+                            <b:inputText label="First Name" value="#{landingBean.staff.firstName}" readonly="true"/>
+                            <b:inputText label="Last name" value="#{landingBean.staff.lastName}" readonly="true"/>
+                            <b:inputText label="Identity Number" value="#{landingBean.staff.identityNumber}" readonly="true"/>
+                            <b:inputText label="Gender" value="#{landingBean.staff.genderType.toString()}" readonly="true"/>
+                            <b:inputText label="Hired Date" value="#{landingBean.staff.createdDate}" readonly="true">
+                                <f:convertDateTime pattern="yyyy MM dd"/>
+                            </b:inputText>
+                            <b:inputText label="Employee Number" value="#{landingBean.staff.employeeId}" readonly="true"/>
+                            <b:inputText label="Cellphone Number" value="#{landingBean.staff.contactDetail.cellphone_number}" readonly="true"/>
+                            <b:inputText label="Telephone Number" value="#{landingBean.staff.contactDetail.tellphone_number}" readonly="true"/>
+                            <b:inputText label="Email Address" value="#{landingBean.staff.contactDetail.emailAddress}" readonly="true"/>
+                        </p:fieldset>
+                    </b:panelGrid>
+                    <p:dataGrid value="#{landingBean.staff.addressList}" var="address" columns="2">
+                        <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                            <p:fieldset legend="#{address.addressType.toString()}" >
+                                <b:inputText label="Address Line 1" value="#{address.addressLine1}" field-size="md" readonly="true" />
+                                <b:inputText label="Address Line 2" value="#{address.addressLine2}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Street" value="#{address.street}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Area" value="#{address.area}"  field-size="md"  readonly="true"/>
+                                <b:inputText label="Code" value="#{address.code}"   field-size="md" readonly="true"/>
+                            </p:fieldset>
+                        </b:panelGrid>
+                    </p:dataGrid>
+                </b:panel>
+
+                <b:panel rendered="#{activeUser.admin}" look="primary" title="Office Admin" collapsible="false">
+                    <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                        <p:fieldset legend="School Details" >
+                            <b:inputText label="School Name" value="#{landingBean.school.name}" readonly="true"/>
+                            <b:inputText label="Registration Number" value="#{landingBean.school.registrationNumber}" readonly="true"/>
+                            <b:inputText label="Cellphone number" value="#{landingBean.school.contact.cellphone_number}" readonly="true"/>
+                            <b:inputText label="Telephone Number" value="#{landingBean.school.contact.tellphone_number}" readonly="true"/>
+                            <b:inputText label="Eamil Address" value="#{landingBean.school.contact.emailAddress}" readonly="true"/>
+                        </p:fieldset>
+                    </b:panelGrid>
+
+                    <p:dataGrid value="#{landingBean.school.address}" var="address" columns="2">
+                        <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                            <p:fieldset legend="#{address.addressType.toString()}" >
+                                <b:inputText label="Address Line 1" value="#{address.addressLine1}" field-size="md" readonly="true" />
+                                <b:inputText label="Address Line 2" value="#{address.addressLine2}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Street" value="#{address.street}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Area" value="#{address.area}"  field-size="md"  readonly="true"/>
+                                <b:inputText label="Code" value="#{address.code}"   field-size="md" readonly="true"/>
+                            </p:fieldset>
+                        </b:panelGrid>
+                    </p:dataGrid>
+
+                    <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                        <p:fieldset legend="Personal Information" >
+                            <b:inputText label="First Name" value="#{landingBean.staff.firstName}" readonly="true"/>
+                            <b:inputText label="Last name" value="#{landingBean.staff.lastName}" readonly="true"/>
+                            <b:inputText label="Identity Number" value="#{landingBean.staff.identityNumber}" readonly="true"/>
+                            <b:inputText label="Gender" value="#{landingBean.staff.genderType.toString()}" readonly="true"/>
+                            <b:inputText label="Hired Date" value="#{landingBean.staff.createdDate}" readonly="true">
+                                <f:convertDateTime pattern="yyyy MM dd"/>
+                            </b:inputText>
+                            <b:inputText label="Employee Number" value="#{landingBean.staff.employeeId}" readonly="true"/>
+                            <b:inputText label="Cellphone Number" value="#{landingBean.staff.contactDetail.cellphone_number}" readonly="true"/>
+                            <b:inputText label="Telephone Number" value="#{landingBean.staff.contactDetail.tellphone_number}" readonly="true"/>
+                            <b:inputText label="Email Address" value="#{landingBean.staff.contactDetail.emailAddress}" readonly="true"/>
+                        </p:fieldset>
+                    </b:panelGrid>
+                    <p:dataGrid value="#{landingBean.staff.addressList}" var="address" columns="2">
+                        <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                            <p:fieldset legend="#{address.addressType.toString()}" >
+                                <b:inputText label="Address Line 1" value="#{address.addressLine1}" field-size="md" readonly="true" />
+                                <b:inputText label="Address Line 2" value="#{address.addressLine2}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Street" value="#{address.street}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Area" value="#{address.area}"  field-size="md"  readonly="true"/>
+                                <b:inputText label="Code" value="#{address.code}"   field-size="md" readonly="true"/>
+                            </p:fieldset>
+                        </b:panelGrid>
+                    </p:dataGrid>
+                </b:panel>
+                <b:panel rendered="#{activeUser.principal}" look="primary" title="Principal" collapsible="false">
+                    <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                        <p:fieldset legend="School Details" >
+                            <b:inputText label="School Name" value="#{landingBean.school.name}" readonly="true"/>
+                            <b:inputText label="Registration Number" value="#{landingBean.school.registrationNumber}" readonly="true"/>
+                            <b:inputText label="Cellphone number" value="#{landingBean.school.contact.cellphone_number}" readonly="true"/>
+                            <b:inputText label="Telephone Number" value="#{landingBean.school.contact.tellphone_number}" readonly="true"/>
+                            <b:inputText label="Eamil Address" value="#{landingBean.school.contact.emailAddress}" readonly="true"/>
+                        </p:fieldset>
+                    </b:panelGrid>
+                    <p:dataGrid value="#{landingBean.school.address}" var="address" columns="2">
+                        <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                            <p:fieldset legend="#{address.addressType.toString()}" >
+                                <b:inputText label="Address Line 1" value="#{address.addressLine1}" field-size="md" readonly="true" />
+                                <b:inputText label="Address Line 2" value="#{address.addressLine2}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Street" value="#{address.street}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Area" value="#{address.area}"  field-size="md"  readonly="true"/>
+                                <b:inputText label="Code" value="#{address.code}"   field-size="md" readonly="true"/>
+                            </p:fieldset>
+                        </b:panelGrid>
+                    </p:dataGrid>
+                    <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                        <p:fieldset legend="Personal Information" >
+                            <b:inputText label="First Name" value="#{landingBean.staff.firstName}" readonly="true"/>
+                            <b:inputText label="Last name" value="#{landingBean.staff.lastName}" readonly="true"/>
+                            <b:inputText label="Identity Number" value="#{landingBean.staff.identityNumber}" readonly="true"/>
+                            <b:inputText label="Gender" value="#{landingBean.staff.genderType.toString()}" readonly="true"/>
+                            <b:inputText label="Hired Date" value="#{landingBean.staff.createdDate}" readonly="true">
+                                <f:convertDateTime pattern="yyyy MM dd"/>
+                            </b:inputText>
+                            <b:inputText label="Employee Number" value="#{landingBean.staff.employeeId}" readonly="true"/>
+                            <b:inputText label="Cellphone Number" value="#{landingBean.staff.contactDetail.cellphone_number}" readonly="true"/>
+                            <b:inputText label="Telephone Number" value="#{landingBean.staff.contactDetail.tellphone_number}" readonly="true"/>
+                            <b:inputText label="Email Address" value="#{landingBean.staff.contactDetail.emailAddress}" readonly="true"/>
+                        </p:fieldset>
+                    </b:panelGrid>
+                    <p:dataGrid value="#{landingBean.staff.addressList}" var="address" columns="2">
+                        <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                            <p:fieldset legend="#{address.addressType.toString()}" >
+                                <b:inputText label="Address Line 1" value="#{address.addressLine1}" field-size="md" readonly="true" />
+                                <b:inputText label="Address Line 2" value="#{address.addressLine2}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Street" value="#{address.street}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Area" value="#{address.area}"  field-size="md"  readonly="true"/>
+                                <b:inputText label="Code" value="#{address.code}"   field-size="md" readonly="true"/>
+                            </p:fieldset>
+                        </b:panelGrid>
+                    </p:dataGrid>
+                    <b:panelGrid colSpans="6,6" size="md" style-class="ui-flui">
+                        <p:fieldset legend="Subject Details">
+                            <p:dataTable value="#{landingBean.staff.subjects}" paginator="true" paginatorPosition="top" paginatorAlwaysVisible="true" var="subject">
+                                <p:column headerText="Subjet Name">
+                                    <h:outputText value="#{subject.name}"/>
+                                </p:column>
+                                <p:column headerText="Subjet Code">
+                                    <h:outputText value="#{subject.code}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </p:fieldset>
+                        <p:fieldset legend="Grade Details">
+                            <p:dataTable value="#{landingBean.staff.grades}" paginator="true" paginatorPosition="top" paginatorAlwaysVisible="true" var="grade">
+                                <p:column headerText="Grade Name">
+                                    <h:outputText value="#{grade.name}"/>
+                                </p:column>
+                                <p:column headerText="Designation">
+                                    <h:outputText value="#{grade.designation}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </p:fieldset>
+                    </b:panelGrid>
+                </b:panel>
+                <b:panel rendered="#{activeUser.headOfDepartment}" look="primary" title="Head of Department" collapsible="false">
+                    <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                        <p:fieldset legend="School Details" >
+                            <b:inputText label="School Name" value="#{landingBean.school.name}" readonly="true"/>
+                            <b:inputText label="Registration Number" value="#{landingBean.school.registrationNumber}" readonly="true"/>
+                            <b:inputText label="Cellphone number" value="#{landingBean.school.contact.cellphone_number}" readonly="true"/>
+                            <b:inputText label="Telephone Number" value="#{landingBean.school.contact.tellphone_number}" readonly="true"/>
+                            <b:inputText label="Eamil Address" value="#{landingBean.school.contact.emailAddress}" readonly="true"/>
+                        </p:fieldset>
+                    </b:panelGrid>
+                    <p:dataGrid value="#{landingBean.school.address}" var="address" columns="2">
+                        <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                            <p:fieldset legend="#{address.addressType.toString()}" >
+                                <b:inputText label="Address Line 1" value="#{address.addressLine1}" field-size="md" readonly="true" />
+                                <b:inputText label="Address Line 2" value="#{address.addressLine2}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Street" value="#{address.street}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Area" value="#{address.area}"  field-size="md"  readonly="true"/>
+                                <b:inputText label="Code" value="#{address.code}"   field-size="md" readonly="true"/>
+                            </p:fieldset>
+                        </b:panelGrid>
+                    </p:dataGrid>
+                    <p:dataGrid value="#{landingBean.school.address}" var="address" columns="2">
+                        <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                            <p:fieldset legend="#{address.addressType.toString()}" >
+                                <b:inputText label="Address Line 1" value="#{address.addressLine1}" field-size="md" readonly="true" />
+                                <b:inputText label="Address Line 2" value="#{address.addressLine2}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Street" value="#{address.street}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Area" value="#{address.area}"  field-size="md"  readonly="true"/>
+                                <b:inputText label="Code" value="#{address.code}"   field-size="md" readonly="true"/>
+                            </p:fieldset>
+                        </b:panelGrid>
+                    </p:dataGrid>
+                    <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                        <p:fieldset legend="Personal Information" >
+                            <b:inputText label="First Name" value="#{landingBean.staff.firstName}" readonly="true"/>
+                            <b:inputText label="Last name" value="#{landingBean.staff.lastName}" readonly="true"/>
+                            <b:inputText label="Identity Number" value="#{landingBean.staff.identityNumber}" readonly="true"/>
+                            <b:inputText label="Gender" value="#{landingBean.staff.genderType.toString()}" readonly="true"/>
+                            <b:inputText label="Hired Date" value="#{landingBean.staff.createdDate}" readonly="true">
+                                <f:convertDateTime pattern="yyyy MM dd"/>
+                            </b:inputText>
+                            <b:inputText label="Employee Number" value="#{landingBean.staff.employeeId}" readonly="true"/>
+                            <b:inputText label="Cellphone Number" value="#{landingBean.staff.contactDetail.cellphone_number}" readonly="true"/>
+                            <b:inputText label="Telephone Number" value="#{landingBean.staff.contactDetail.tellphone_number}" readonly="true"/>
+                            <b:inputText label="Email Address" value="#{landingBean.staff.contactDetail.emailAddress}" readonly="true"/>
+                        </p:fieldset>
+                    </b:panelGrid>
+                    <p:dataGrid value="#{landingBean.staff.addressList}" var="address" columns="2">
+                        <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                            <p:fieldset legend="#{address.addressType.toString()}" >
+                                <b:inputText label="Address Line 1" value="#{address.addressLine1}" field-size="md" readonly="true" />
+                                <b:inputText label="Address Line 2" value="#{address.addressLine2}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Street" value="#{address.street}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Area" value="#{address.area}"  field-size="md"  readonly="true"/>
+                                <b:inputText label="Code" value="#{address.code}"   field-size="md" readonly="true"/>
+                            </p:fieldset>
+                        </b:panelGrid>
+                    </p:dataGrid>
+                    <b:panelGrid colSpans="6,6" size="md" style-class="ui-flui">
+                        <p:fieldset legend="Subject Details">
+                            <p:dataTable value="#{landingBean.staff.subjects}" paginator="true" paginatorPosition="top" paginatorAlwaysVisible="true" var="subject">
+                                <p:column headerText="Subjet Name">
+                                    <h:outputText value="#{subject.name}"/>
+                                </p:column>
+                                <p:column headerText="Subjet Code">
+                                    <h:outputText value="#{subject.code}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </p:fieldset>
+                        <p:fieldset legend="Grade Details">
+                            <p:dataTable value="#{landingBean.staff.grades}" paginator="true" paginatorPosition="top" paginatorAlwaysVisible="true" var="grade">
+                                <p:column headerText="Grade Name">
+                                    <h:outputText value="#{grade.name}"/>
+                                </p:column>
+                                <p:column headerText="Designation">
+                                    <h:outputText value="#{grade.designation}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </p:fieldset>
+                    </b:panelGrid>
+                </b:panel>
+                <b:panel rendered="#{activeUser.educator}" look="primary" title="Educator" collapsible="false">
+                    <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                        <p:fieldset legend="School Details" >
+                            <b:inputText label="School Name" value="#{landingBean.school.name}" readonly="true"/>
+                            <b:inputText label="Registration Number" value="#{landingBean.school.registrationNumber}" readonly="true"/>
+                            <b:inputText label="Cellphone number" value="#{landingBean.school.contact.cellphone_number}" readonly="true"/>
+                            <b:inputText label="Telephone Number" value="#{landingBean.school.contact.tellphone_number}" readonly="true"/>
+                            <b:inputText label="Eamil Address" value="#{landingBean.school.contact.emailAddress}" readonly="true"/>
+                        </p:fieldset>
+                    </b:panelGrid>
+                    <p:dataGrid value="#{landingBean.school.address}" var="address" columns="2">
+                        <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                            <p:fieldset legend="#{address.addressType.toString()}" >
+                                <b:inputText label="Address Line 1" value="#{address.addressLine1}" field-size="md" readonly="true" />
+                                <b:inputText label="Address Line 2" value="#{address.addressLine2}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Street" value="#{address.street}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Area" value="#{address.area}"  field-size="md"  readonly="true"/>
+                                <b:inputText label="Code" value="#{address.code}"   field-size="md" readonly="true"/>
+                            </p:fieldset>
+                        </b:panelGrid>
+                    </p:dataGrid>
+                    <p:dataGrid value="#{landingBean.school.address}" var="address" columns="2">
+                        <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                            <p:fieldset legend="#{address.addressType.toString()}" >
+                                <b:inputText label="Address Line 1" value="#{address.addressLine1}" field-size="md" readonly="true" />
+                                <b:inputText label="Address Line 2" value="#{address.addressLine2}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Street" value="#{address.street}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Area" value="#{address.area}"  field-size="md"  readonly="true"/>
+                                <b:inputText label="Code" value="#{address.code}"   field-size="md" readonly="true"/>
+                            </p:fieldset>
+                        </b:panelGrid>
+                    </p:dataGrid>
+                    <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                        <p:fieldset legend="Personal Information" >
+                            <b:inputText label="First Name" value="#{landingBean.staff.firstName}" readonly="true"/>
+                            <b:inputText label="Last name" value="#{landingBean.staff.lastName}" readonly="true"/>
+                            <b:inputText label="Identity Number" value="#{landingBean.staff.identityNumber}" readonly="true"/>
+                            <b:inputText label="Gender" value="#{landingBean.staff.genderType.toString()}" readonly="true"/>
+                            <b:inputText label="Hired Date" value="#{landingBean.staff.createdDate}" readonly="true">
+                                <f:convertDateTime pattern="yyyy MM dd"/>
+                            </b:inputText>
+                            <b:inputText label="Employee Number" value="#{landingBean.staff.employeeId}" readonly="true"/>
+                            <b:inputText label="Cellphone Number" value="#{landingBean.staff.contactDetail.cellphone_number}" readonly="true"/>
+                            <b:inputText label="Telephone Number" value="#{landingBean.staff.contactDetail.tellphone_number}" readonly="true"/>
+                            <b:inputText label="Email Address" value="#{landingBean.staff.contactDetail.emailAddress}" readonly="true"/>
+                        </p:fieldset>
+                    </b:panelGrid>
+                    <p:dataGrid value="#{landingBean.staff.addressList}" var="address" columns="2">
+                        <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                            <p:fieldset legend="#{address.addressType.toString()}" >
+                                <b:inputText label="Address Line 1" value="#{address.addressLine1}" field-size="md" readonly="true" />
+                                <b:inputText label="Address Line 2" value="#{address.addressLine2}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Street" value="#{address.street}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Area" value="#{address.area}"  field-size="md"  readonly="true"/>
+                                <b:inputText label="Code" value="#{address.code}"   field-size="md" readonly="true"/>
+                            </p:fieldset>
+                        </b:panelGrid>
+                    </p:dataGrid>
+                    <b:panelGrid colSpans="6,6" size="md" style-class="ui-flui">
+                        <p:fieldset legend="Subject Details">
+                            <p:dataTable value="#{landingBean.staff.subjects}" paginator="true" paginatorPosition="top" paginatorAlwaysVisible="true" var="subject">
+                                <p:column headerText="Subjet Name">
+                                    <h:outputText value="#{subject.name}"/>
+                                </p:column>
+                                <p:column headerText="Subjet Code">
+                                    <h:outputText value="#{subject.code}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </p:fieldset>
+                        <p:fieldset legend="Grade Details">
+                            <p:dataTable value="#{landingBean.staff.grades}" paginator="true" paginatorPosition="top" paginatorAlwaysVisible="true" var="grade">
+                                <p:column headerText="Grade Name">
+                                    <h:outputText value="#{grade.name}"/>
+                                </p:column>
+                                <p:column headerText="Designation">
+                                    <h:outputText value="#{grade.designation}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </p:fieldset>
+                    </b:panelGrid>
+                </b:panel>
+                <b:panel rendered="#{activeUser.learner}" look="primary" title="System Admin" collapsible="false">
+                    <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                        <p:fieldset legend="School Details" >
+                            <b:inputText label="School Name" value="#{landingBean.school.name}" readonly="true"/>
+                            <b:inputText label="Registration Number" value="#{landingBean.school.registrationNumber}" readonly="true"/>
+                            <b:inputText label="Cellphone number" value="#{landingBean.school.contact.cellphone_number}" readonly="true"/>
+                            <b:inputText label="Telephone Number" value="#{landingBean.school.contact.tellphone_number}" readonly="true"/>
+                            <b:inputText label="Eamil Address" value="#{landingBean.school.contact.emailAddress}" readonly="true"/>
+                        </p:fieldset>
+                    </b:panelGrid>
+                    <p:dataGrid value="#{landingBean.school.address}" var="address" columns="2">
+                        <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                            <p:fieldset legend="#{address.addressType.toString()}" >
+                                <b:inputText label="Address Line 1" value="#{address.addressLine1}" field-size="md" readonly="true" />
+                                <b:inputText label="Address Line 2" value="#{address.addressLine2}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Street" value="#{address.street}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Area" value="#{address.area}"  field-size="md"  readonly="true"/>
+                                <b:inputText label="Code" value="#{address.code}"   field-size="md" readonly="true"/>
+                            </p:fieldset>
+                        </b:panelGrid>
+                    </p:dataGrid>
+                    <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                        <p:fieldset legend="Personal Information" >
+                            <b:inputText label="First Name" value="#{landingBean.student.firstName}" readonly="true"/>
+                            <b:inputText label="Last name" value="#{landingBean.student.lastName}" readonly="true"/>
+                            <b:inputText label="Identity Number" value="#{landingBean.student.identityNumber}" readonly="true"/>
+                            <b:inputText label="Gender" value="#{landingBean.student.genderType.toString()}" readonly="true"/>
+                            <b:inputText label="Hired Date" value="#{landingBean.student.createdDate}" readonly="true">
+                                <f:convertDateTime pattern="yyyy MM dd"/>
+                            </b:inputText>
+                            <b:inputText label="Student Number" value="#{landingBean.student.studentNumber}" readonly="true"/>
+                            <b:inputText label="Cellphone Number" value="#{landingBean.student.contactDetail.cellphone_number}" readonly="true"/>
+                            <b:inputText label="Telephone Number" value="#{landingBean.student.contactDetail.tellphone_number}" readonly="true"/>
+                            <b:inputText label="Email Address" value="#{landingBean.student.contactDetail.emailAddress}" readonly="true"/>
+                        </p:fieldset>
+                    </b:panelGrid>
+                    <p:dataGrid value="#{landingBean.student.addressList}" var="address" columns="2">
+                        <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                            <p:fieldset legend="#{address.addressType.toString()}" >
+                                <b:inputText label="Address Line 1" value="#{address.addressLine1}" field-size="md" readonly="true" />
+                                <b:inputText label="Address Line 2" value="#{address.addressLine2}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Street" value="#{address.street}"  field-size="md" readonly="true"/>
+                                <b:inputText label="Area" value="#{address.area}"  field-size="md"  readonly="true"/>
+                                <b:inputText label="Code" value="#{address.code}"   field-size="md" readonly="true"/>
+                            </p:fieldset>
+                        </b:panelGrid>
+                    </p:dataGrid>
+                    <b:panelGrid colSpans="6,6" size="md" style-class="ui-flui">
+                        <p:fieldset legend="Subject Details">
+                            <p:dataTable value="#{landingBean.student.subjects}" paginator="true" paginatorPosition="top" paginatorAlwaysVisible="true" var="subject">
+                                <p:column headerText="Subjet Name">
+                                    <h:outputText value="#{subject.name}"/>
+                                </p:column>
+                                <p:column headerText="Subjet Code">
+                                    <h:outputText value="#{subject.code}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </p:fieldset>
+                    </b:panelGrid>
+                </b:panel> 
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

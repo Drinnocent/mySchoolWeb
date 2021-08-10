@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>     
+    </h:head>
+    <h:body>
+        <ui:composition template="/template/template.xhtml">
+            <ui:define name="maincontent">
+                <p:dataTable rendered="#{gradeBean.list}" value="#{gradeBean.grades}" var="gr" paginator="true" paginatorPosition="top" paginatorAlwaysVisible="false" reflow="true" rows="10">
+                    <f:facet name="header">
+                        <p:toolbar>
+                            <f:facet name="left">
+                                <b:commandButton icon-size="lg" icon-awesome="fa-plus-square-o" action="#{gradeBean.addOrUpdate(null)}" update="@form"/>
+                            </f:facet>
+                        </p:toolbar>
+                    </f:facet>
+                    <p:column headerText="Created Date">
+                        <h:outputText value="#{gr.createdDate}">
+                            <f:convertDateTime pattern="yyyy MM dd"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Grade name">
+                        <h:outputText value="#{gr.name}"/>
+                    </p:column>
+                    <p:column headerText="Designation">
+                        <h:outputText value="#{gr.designation}"/>
+                    </p:column>
+                    <p:column headerText="Action">
+                        <b:commandButton icon-size="lg" icon-awesome="pencil" action="#{gradeBean.addOrUpdate(gr)}" update="@form"/>
+                        <p:spacer width="5px"/>
+                        <b:commandButton rendered="#{activeUser.admin or activeUser.principal}" icon-size="lg" icon-awesome="remove" action="#{gradeBean.delete(gr)}" update="@form"/>
+                    </p:column>
+                </p:dataTable>
+                <b:panel rendered="#{gradeBean.add}" look="primary" title="Grade" collapsible="false">
+                    <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                        <b:inputText value="#{gradeBean.grade.name}" label="Grade  Name" field-size="md"/>
+                        <b:inputText value="#{gradeBean.grade.designation}" label="Grade Designation" field-size="md"/>
+                        <b:inputText value="#{gradeBean.grade.id}" label="Grade ID" field-size="md"/>
+                    </b:panelGrid> 
+                    <f:facet name="footer">
+                        <p:toolbar>
+                            <f:facet name="right">
+                                <b:commandButton size="xs" look="success" value="save" action="#{gradeBean.save(gradeBean.grade)}" update="@form"/>
+                                <p:spacer width="15px"/>
+                                <b:commandButton size="xs" look="danger" value="cancel" action="#{gradeBean.cancel(gradeBean.grade)}" update="@form"/>
+                            </f:facet>
+                        </p:toolbar>
+                    </f:facet>
+                </b:panel>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

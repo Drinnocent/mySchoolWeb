@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+    <body>
+        <ui:composition>
+            <b:navBar brand="ADMINISTRATION" fluid="true"   brandHref="#" rendered="#{menuBean.activeUser.systemadmin or menuBean.activeUser.admin}">
+                <b:navbarLinks >
+                    <b:navCommandLink iconAwesome="fa-home" action="#{menuBean.routing('/secured/landing')}" immediate="true"></b:navCommandLink>
+                    <b:navCommandLink rendered="#{menuBean.activeUser.systemadmin}" value="School" action="#{menuBean.routing('/secured/school')}" immediate="true"></b:navCommandLink>
+                    <b:navCommandLink rendered="#{menuBean.activeUser.systemadmin}" value="User" action="#{menuBean.routing('/secured/user')}" immediate="true"></b:navCommandLink>
+                    <b:navCommandLink rendered="#{menuBean.activeUser.systemadmin}" value="Grade" action="#{menuBean.routing('/secured/grade')}" immediate="true"></b:navCommandLink>
+                    <b:navCommandLink rendered="#{menuBean.activeUser.systemadmin}" value="Subject" action="#{menuBean.routing('/secured/subject')}" immediate="true"></b:navCommandLink>
+                    <b:navCommandLink rendered="#{menuBean.activeUser.systemadmin}" value="Facility" action="#{menuBean.routing('/secured/facility')}" immediate="true"></b:navCommandLink>
+                    <b:navCommandLink value="Employee" action="#{menuBean.routing('/secured/employee')}" immediate="true"></b:navCommandLink>
+                    <b:navCommandLink value="Student" action="#{menuBean.routing('/secured/student')}" immediate="true"></b:navCommandLink>
+                    <b:navCommandLink value="Profile" action="#{menuBean.routing('/secured/profile')}" immediate="true"></b:navCommandLink>
+                </b:navbarLinks>
+            </b:navBar>
+            <b:navBar brand="EMPLOYEE" fluid="true"   brandHref="#" rendered="#{menuBean.activeUser.educator or menuBean.activeUser.headOfDepartment or menuBean.activeUser.principal}">
+                <b:navbarLinks >
+                    <b:navCommandLink iconAwesome="fa-home" action="#{menuBean.routing('/secured/landing')}" immediate="true"></b:navCommandLink>
+                    <b:navCommandLink rendered="#{menuBean.activeUser.principal}" value="Employee" action="#{menuBean.routing('/secured/employee')}" immediate="true"></b:navCommandLink>
+                    <b:navCommandLink value="Assessment" action="#{menuBean.routing('/secured/assessment')}" immediate="true"></b:navCommandLink>
+                    <b:navCommandLink value="Attendence" action="#{menuBean.routing('/secured/attendance')}" immediate="true"></b:navCommandLink>
+                    <b:navCommandLink value="Student" action="#{menuBean.routing('/secured/student')}" immediate="true"></b:navCommandLink>
+                    <b:navCommandLink value="profile" action="#{menuBean.routing('/secured/profile')}" immediate="true"></b:navCommandLink>
+                </b:navbarLinks>
+            </b:navBar>
+            <b:navBar brand="LEARNER" fluid="true"   brandHref="#" rendered="#{menuBean.activeUser.learner}">
+                <b:navbarLinks >
+                    <b:navCommandLink iconAwesome="fa-home" action="#{menuBean.routing('/secured/landing')}" immediate="true"></b:navCommandLink> 
+                    <b:navCommandLink value="Assessment" action="#{menuBean.routing('/secured/assessment')}" immediate="true"></b:navCommandLink>
+                    <b:navCommandLink value="Attendence" action="#{menuBean.routing('/secured/attendance')}" immediate="true"></b:navCommandLink>
+                    <b:navCommandLink value="Profile" action="#{menuBean.routing('/secured/profile')}" immediate="true"></b:navCommandLink>
+                </b:navbarLinks>
+            </b:navBar>
+        </ui:composition>
+    </body>
+</html>
+

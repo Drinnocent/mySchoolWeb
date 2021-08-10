@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        
+    </h:head>
+    <h:body>
+        <ui:composition template="/template/template.xhtml">
+            <ui:define name="maincontent">
+                <p:dataTable rendered="#{employeeBean.list}" value="#{employeeBean.employees}" var="emp" paginator="true" paginatorPosition="top" paginatorAlwaysVisible="false" reflow="true" rows="10">
+                    <f:facet name="header">
+                        <p:toolbar>
+                            <f:facet name="left">
+                                <b:commandButton icon-size="lg" icon-awesome="fa-plus-square-o" action="#{employeeBean.addOrUpdate(null)}" update="@form"/>
+                            </f:facet>
+                        </p:toolbar>
+                    </f:facet>
+                    <p:column headerText="Hire Date">
+                        <h:outputText value="#{emp.createdDate}">
+                            <f:convertDateTime pattern="yyyy MM dd"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Full Names">
+                        <h:outputText value="#{emp.firstName} #{emp.lastName}"/>
+                    </p:column>
+                    <p:column headerText="Identity Number">
+                        <h:outputText value="#{emp.identityNumber}"/>
+                    </p:column>
+                    <p:column headerText="Gender">
+                        <h:outputText value="#{emp.genderType.toString()}"/>
+                    </p:column>
+                    <p:column headerText="Employee Number">
+                        <h:outputText value="#{emp.employeeId}"/>
+                    </p:column>
+                    <p:column headerText="Cellphone Number">
+                        <h:outputText value="#{emp.contactDetail.cellphone_number}"/>
+                    </p:column>
+                    <p:column headerText="Email Address">
+                        <h:outputText value="#{emp.contactDetail.emailAddress}"/>
+                    </p:column>
+                    <p:column headerText="Action">
+                        <b:commandButton icon-size="lg" icon-awesome="pencil" action="#{employeeBean.addOrUpdate(emp)}" update="@form"/>
+                        <p:spacer width="5px"/>
+                        <b:commandButton rendered="#{activeUser.systemadmin}" icon-size="lg" icon-awesome="remove" action="#{employeeBean.delete(emp)}" update="@form"/>
+                    </p:column>
+                </p:dataTable>
+                <b:panel rendered="#{employeeBean.add}" look="primary" title="Employee" collapsible="false">
+                    <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                        <b:inputText value="#{employeeBean.employeed.firstName}" label="First Name" field-size="md"/>
+                        <b:inputText value="#{employeeBean.employeed.lastName}" label="Last Name" field-size="md"/>
+                        <b:inputText value="#{employeeBean.employeed.identityNumber}" label="Identity Number" field-size="md"/>
+                        <b:formGroup>
+                            <p:outputLabel value="Gender Type">
+                                <p:selectOneMenu label="Gender" value="#{employeeBean.employeed.genderType}" converter="entityConverter" filter="false">
+                                    <f:selectItems value="#{employeeBean.genders}" var="gender" itemLabel="#{gender.toString()}" itemValue="#{gender}"/>
+                                </p:selectOneMenu>
+                            </p:outputLabel>
+                        </b:formGroup>
+                         <b:inputText value="#{employeeBean.employeed.employeeId}" label="Employee Number" field-size="md"/>
+                         <b:inputText value="#{employeeBean.employeed.contactDetail.cellphone_number}" label="CellPhone Number" field-size="md"/>
+                         <b:inputText value="#{employeeBean.employeed.contactDetail.tellphone_number}" label="TelePhone Number" field-size="md"/>
+                         <b:inputText value="#{employeeBean.employeed.contactDetail.emailAddress}" label="Email" field-size="md"/>
+                         <b:formGroup>
+                            <p:outputLabel value="Employee Type"/>
+                            <p:selectOneMenu value="#{employeeBean.employeed.employeeType}" label="Employee Type" converter="entityConverter" filter="false">
+                                <p:ajax update="@form" listener="#{employeeBean.employeeTypeListener()}"/>
+                            <f:selectItems value="#{employeeBean.employeeType}" var="empType" itemLabel="#{empType.toString()}" itemValue="#{empType}"/>
+                        </p:selectOneMenu>
+                        </b:formGroup>
+                         <b:inputText rendered="#{employeeBean.visible}" value="#{employeeBean.employeed.saceRegNumber}" label="Registration Number" field-size="md"/>
+                    </b:panelGrid>
+                    <b:panelGrid rendered="#{employeeBean.visible}" colSpans="6,6" style-class="ui-fluid" size="md">
+                        <p:fieldset legend="Subjects">
+                            <b:panelGrid id="subjectListPG" colSpans="12" size="md" style-class="ui-fluid">
+                                <h:selectManyCheckbox value="#{employeeBean.employeed.subjects}" layout="pageDirection" converter="entityConverter" collectionType="java.util.ArrayList">
+                                    <f:selectItems value="#{employeeBean.subjects}" var="subject" itemLabel="#{subject.name}" itemValue="#{subject}"/>
+                                </h:selectManyCheckbox>
+                            </b:panelGrid>
+                        </p:fieldset>
+                        <p:fieldset legend="Grades">
+                            <b:panelGrid id="gradesListPG" colSpans="12" size="md" style-class="ui-fluid">
+                                <h:selectManyCheckbox value="#{employeeBean.employeed.grades}" layout="pageDirection" converter="entityConverter" collectionType="java.util.ArrayList">
+                                    <f:selectItems value="#{employeeBean.grades}" var="grade" itemLabel="#{grade.designation}" itemValue="#{grade}"/>
+                                </h:selectManyCheckbox>
+                            </b:panelGrid>
+                        </p:fieldset>
+                    </b:panelGrid>
+                    <p:dataGrid value="#{employeeBean.employeed.addressList}" var="address" columns="2">
+                        <b:panelGrid col-spans="12" size="md" style-class="ui-fluid">
+                            <p:fieldset legend="#{address.addressType.toString()}">
+                                <b:inputText value="#{address.addressLine1}" label="Address Line 1" field-size="md" readonly="#{addressType eq 'POSTAL'}"/>
+                                <b:inputText value="#{address.addressLine2}" label="Address Line 2" field-size="md"/>
+                                <b:inputText value="#{address.area}" label="Area" field-size="md"/>
+                                <b:inputText value="#{address.street}" label="Street" field-size="md" readonly="#{addressType eq 'POSTAL'}"/>
+                                <b:inputText value="#{address.code}" label="Code" field-size="md"/>
+                            </p:fieldset>
+                        </b:panelGrid>
+                    </p:dataGrid>
+                    <f:facet name="footer">
+                        <p:toolbar>
+                            <f:facet name="right">
+                                <b:commandButton size="xs" look="success" value="save" action="#{employeeBean.save(employeeBean.employeed)}" update="@form"/>
+                                <p:spacer width="15px"/>
+                                <b:commandButton size="xs" look="danger" value="cancel" action="#{employeeBean.cancel(employeeBean.employeed)}" update="@form"/>
+                            </f:facet>
+                        </p:toolbar>
+                    </f:facet>
+                </b:panel>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

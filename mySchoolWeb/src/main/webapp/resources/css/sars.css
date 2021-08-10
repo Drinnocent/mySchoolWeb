@@ -1,0 +1,246 @@
+@import url(//fonts.googleapis.com/css?family=Open+Sans);
+body{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    margin:0 auto;
+    background-color:#fff;
+}
+.ui-datatable{
+    border-color:#DCDCDC !important;
+}
+.ui-datatable .ui-column-filter{
+    display: none !important;
+}
+.ui-datatable .ui-datatable-data{
+    font-size:14px !important;
+    font-family: 'Tangerine', serif !important;
+    border-color:#DCDCDC !important;
+}
+.ui-datatable .ui-datatable-header {
+    text-align: left !important;
+    background: #F5F5F5 !important;
+    color:#D4AF37 !important;
+    border-color:#DCDCDC !important;
+}
+.ui-datatable .ui-datatable-footer{
+    border-color:#DCDCDC !important;
+    color:#D4AF37 !important;
+    background: #F5F5F5 !important;
+    font-size: 11px !important;
+    text-transform: uppercase !important;
+}
+.ui-datatable thead th{
+    text-align: left !important;
+    text-transform: uppercase !important;
+    font-size: 11px !important;
+    font-weight: bold !important;
+    /*color:#D4AF37 !important;*/
+    color:#23527c !important;
+    background: #F5F5F5 !important;
+    border-color:#DCDCDC !important;
+}
+.ui-datatable tbody td{
+    border-color:#DCDCDC !important;
+    background: #ffffff !important;    
+    color:#2F4F4F !important;
+    font-size:11px  !important;
+}
+.ui-datatable .ui-paginator{
+    background: #F5F5F5 !important;
+    border-color:#DCDCDC !important;
+    color:#23527c !important;
+}
+.ui-datatable-reflow .ui-reflow-dropdown{
+    background: #F5F5F5 !important; 
+    font-size:10px  !important;
+    color: #2F4F4F !important; 
+}
+.ui-datatable-subtable-header{
+    text-align: left !important;
+    background: #F5F5F5 !important;
+    color:#D4AF37 !important;
+    border-color:#DCDCDC !important;  
+}
+.ui-datatable-subtable-footer{
+    text-align: left !important;
+    background: #F5F5F5 !important;
+    color:#D4AF37 !important;
+    border-color:#DCDCDC !important;
+}
+/*******************Toolbar css************************************************/
+.ui-toolbar{
+    border: none !important;
+    background:#F5F5F5 !important;
+    color:#D4AF37 !important;
+}
+.ui-toolbar.headerToolBarCss{
+    border: none !important;
+    background: #F5F5F5 !important;
+    color:#D4AF37 !important;
+}
+/***************************Button css*****************************************/
+.ui-button{
+    background:#F5F5F5 !important; 
+    color:#D4AF37 !important;
+    border-color:#DCDCDC !important;
+}
+/*.ui-button-text-only{
+    color:#D4AF37 !important; 
+}
+.ui-button-text{
+    color:#D4AF37 !important; 
+}*/
+/*********************************Prime faces outputlabel css *****************/
+.ui-outputlabel{
+    font-size:10px  !important; 
+    text-transform: uppercase !important;
+    font-weight:bolder  !important;
+    color: #2F4F4F !important; 
+}
+/****************************Prime faces checkbox css**************************/
+.ui-chkbox .ui-chkbox-label{
+    vertical-align: middle !important;
+    font-size:10px  !important;
+    text-transform: uppercase !important;    
+}
+/*******************************Custom css*************************************/
+.select-Many-Checkbox{
+    vertical-align: middle !important;
+    font-size:10px  !important;
+    text-transform: uppercase !important;  
+}
+/*******************************************************************************/
+.ui-selectonemenu .ui-selectonemenu-trigger{
+    background: #F5F5F5 !important; 
+}
+.ui-fileupload-buttonbar{
+    background: #F5F5F5 !important; 
+    border-color:#DCDCDC !important;
+}
+.ui-datepicker-prev{
+    background: #F5F5F5 !important; 
+    color: #2F4F4F !important; 
+    border-color:#DCDCDC !important;
+}
+.ui-datepicker-next{
+    background: #F5F5F5 !important;  
+    color: #2F4F4F !important;  
+    border-color:#DCDCDC !important;
+}
+
+.ui-datepicker .ui-datepicker-header{
+    background: #F5F5F5 !important;  
+    border-color:#DCDCDC !important;
+}
+.ui-datepicker select.ui-datepicker-month,.ui-datepicker select.ui-datepicker-year{
+    color: #2F4F4F !important;  
+}
+.ui-datepicker td span, .ui-datepicker td a{
+    background: #F5F5F5 !important; 
+    border-color:#DCDCDC !important;
+}
+.ui-dialog-titlebar{
+    background: #F5F5F5 !important; 
+    border-color:#DCDCDC !important; 
+    color: #2F4F4F !important; 
+}
+.ui-dialog-titlebar-close{
+    color: #2F4F4F !important; 
+}
+.ui-dialog-content{
+    font-size:10px  !important;
+}
+.ui-panelgrid .ui-panelgrid-cell{
+    background: #F5F5F5 !important; 
+    border-color:#DCDCDC !important;  
+}
+.ui-datalist-content{
+    border: none !important; 
+    font-size:10px  !important;
+    color: #2F4F4F !important;
+    text-transform: capitalize !important; 
+    font-weight: normal !important;
+}
+.ui-outputlabel.headercss{
+    text-align: left !important; 
+    font-size:30px  !important; 
+    text-transform: capitalize !important;
+    font-weight: bold !important;
+    color:#428bca !important;
+}
+.ui-tabs{
+    /*background: #F5F5F5 !important;*/
+}
+.ui-tabs-header{
+    color:#23527c !important;  
+}
+.ui-tabs-nav{
+    background: #F5F5F5 !important;    
+}
+.accepted{
+    color:#449d44;
+}
+.rejected{
+    color:#d9534f;
+}
+.pleaseaction{
+    color:#2aabd2;
+
+}
+.declared{
+    color:lawngreen;  
+}
+.pendingsapupdate{
+    color:#D4AF37; 
+}
+.ui-accordion .ui-accordion-header{
+    background-color: #F5F5F5;
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active{
+    background-color:#DCDCDC !important;
+}
+.ui-selectlistbox-item ui-corner-all ui-state-highlight{
+    color:#23527C !important;
+}
+.ui-selectlistbox-item ui-corner-all ui-state-hover{
+    background-color:#23527C !important;
+}
+.medium{
+    width:60px;  
+}
+.large{
+    width:100px;  
+}
+.small{
+  width:35px;    
+}
+.ui-fileupload-buttonbar {
+    background: transparent none;
+    border: none;
+}
+.ui-fileupload-content {
+    display: none;
+}
+.ui-fileupload-buttonbar .ui-fileupload-choose {
+    width:100% !important; 
+}
+.ui-fileupload-buttonbar .ui-fileupload-upload {
+    width:100% !important;  
+}
+.ui-fileupload-buttonbar .ui-fileupload-cancel {
+    width:100% !important;
+}
+.ui-fieldset .ui-fieldset-legend{
+    background: none;
+    padding-top: 0.2em !important;
+    padding-right: 1em;
+    padding-bottom: 0.2em !important;
+    padding-left: 1em; 
+    color:#428bca !important;
+    font-size:14px  !important; 
+    width: 25.0em !important; 
+    text-transform: uppercase !important;
+}
+
+
+

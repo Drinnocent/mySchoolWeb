@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>     
+    </h:head>
+    <h:body>
+        <ui:composition template="/template/template.xhtml">
+            <ui:define name="maincontent">
+                <p:dataTable rendered="#{assessmentBean.list}" value="#{assessmentBean.assessments}" var="ass" paginator="true" paginatorPosition="top" paginatorAlwaysVisible="false" reflow="true" rows="10">
+                    <f:facet name="header">
+                        <p:toolbar>
+                            <f:facet name="left">
+                                <b:commandButton icon-size="lg" icon-awesome="fa-plus-square-o" action="#{assessmentBean.addOrUpdate(null)}" update="@form"/>
+                            </f:facet>
+                        </p:toolbar>
+                    </f:facet>
+                    <p:column headerText="Created Date">
+                        <h:outputText value="#{ass.createdDate}">
+                            <f:convertDateTime pattern="yyyy MM dd"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Assessment Name">
+                        <h:outputText value="#{ass.name}"/>
+                    </p:column>
+                    <p:column headerText="Description">
+                        <h:outputText value="#{ass.description}"/>
+                    </p:column>
+                    <p:column headerText="Status">
+                        <h:outputText value="#{ass.status}"/>
+                    </p:column>
+                    <p:column headerText="Pass Mark">
+                        <h:outputText value="#{ass.passMark}"/>
+                    </p:column>
+                    <p:column headerText="Total Mark">
+                        <h:outputText value="#{ass.totalMark}"/>
+                    </p:column>
+                    <p:column headerText="Action">
+                        <b:commandButton icon-size="lg" icon-awesome="pencil" action="#{assessmentBean.addOrUpdate(ass)}" update="@form"/>
+                        <p:spacer width="5px"/>
+                        <b:commandButton icon-size="lg" icon-awesome="remove" action="#{assessmentBean.delete(ass)}" update="@form"/>
+                    </p:column>
+                </p:dataTable>
+                <b:panel rendered="#{assessmentBean.add}" look="primary" title="Assessment" collapsible="false">
+                    <b:panelGrid colSpans="12" size="md" style-class="ui-fluid">
+                        <b:inputText value="#{assessmentBean.assessment.name}" label="Name" field-size="md"/>
+                        <b:inputText value="#{assessmentBean.assessment.description}" label="Description" field-size="md"/>
+                        <b:inputText value="#{assessmentBean.assessment.passMark}" label="Pass mark" field-size="md"/>
+                        <b:inputText value="#{assessmentBean.assessment.totalMark}" label="Total Mark" field-size="md"/>
+                    </b:panelGrid> 
+                    <f:facet name="footer">
+                        <p:toolbar>
+                            <f:facet name="right">
+                                <b:commandButton size="xs" look="success" value="save" action="#{assessmentBean.save(assessmentBean.assessment)}" update="@form"/>
+                                <p:spacer width="15px"/>
+                                <b:commandButton size="xs" look="danger" value="cancel" action="#{assessmentBean.cancel(assessmentBean.assessment)}" update="@form"/>
+                            </f:facet>
+                        </p:toolbar>
+                    </f:facet>
+                </b:panel>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

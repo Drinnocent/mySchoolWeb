@@ -1,0 +1,9 @@
+za\gov\dk\persistence\EmployeeRepository.class
+za\gov\dk\persistence\AttendanceRepository.class
+za\gov\dk\persistence\SchoolRepository.class
+za\gov\dk\persistence\StudentRepository.class
+za\gov\dk\persistence\SubjectRepository.class
+za\gov\dk\persistence\FacilityRepository.class
+za\gov\dk\persistence\AssessmentRepository.class
+za\gov\dk\persistence\GradeRepository.class
+za\gov\dk\persistence\SchoolUserRepository.class

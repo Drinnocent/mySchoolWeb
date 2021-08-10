@@ -1,0 +1,10 @@
+za\gov\dk\common\AddressType.class
+za\gov\dk\common\DataSourceConfiguration.class
+za\gov\dk\common\PersonType.class
+za\gov\dk\common\EmployeeType.class
+za\gov\dk\common\Gender.class
+za\gov\dk\common\SchoolUserType.class
+za\gov\dk\common\DataSourceUtility.class
+za\gov\dk\common\SchoolUserStatus.class
+za\gov\dk\common\TestDataSourceConfiguration.class
+za\gov\dk\common\AttendanceStatus.class
