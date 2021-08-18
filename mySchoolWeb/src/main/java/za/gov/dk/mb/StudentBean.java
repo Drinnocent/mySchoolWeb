@@ -63,7 +63,7 @@ public class StudentBean extends BaseBean {
         this.resetView(false).setList(true);
         students = studentService.listAll();
         subjects = subjectService.listAll();
-        grades=gradeService.listAll();
+        grades = gradeService.listAll();
 
         personTypes = Arrays.asList(PersonType.values());
         addressTypes = Arrays.asList(AddressType.values());
@@ -103,7 +103,7 @@ public class StudentBean extends BaseBean {
             ContactDetail contactDetail = new ContactDetail();
             contactDetail.setCreatedBy(getActiveUser().getIdentifier());
             contactDetail.setCreatedDate(new Date());
-             student.setContactDetail(contactDetail);
+            student.setContactDetail(contactDetail);
 
             students.add(0, student);
         }
@@ -198,6 +198,14 @@ public class StudentBean extends BaseBean {
         this.genders = genders;
     }
 
+    public List<Grade> getGrades() {
+        return grades;
+    }
+
+    public void setGrades(List<Grade> grades) {
+        this.grades = grades;
+    }
+
     public School getSchool() {
         return school;
     }
@@ -205,6 +213,5 @@ public class StudentBean extends BaseBean {
     public void setSchool(School school) {
         this.school = school;
     }
-    
 
 }

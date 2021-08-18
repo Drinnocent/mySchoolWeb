@@ -18,8 +18,8 @@ import za.gov.dk.common.SchoolUserType;
  */
 @ManagedBean
 @SessionScoped
-public class ActiveUser implements Serializable{
-    
+public class ActiveUser implements Serializable {
+
     private String username;
     private StringBuilder displayName;
     private boolean menuActivationIndicator = Boolean.TRUE;
@@ -43,9 +43,8 @@ public class ActiveUser implements Serializable{
     private SchoolUserStatus activeStatus;
     private PersonType personType;
     private SchoolUserType systemUserType;
-    
-    public void resetRole(boolean validity)
-    {
+
+    public void resetRole(boolean validity) {
         setAdmin(validity);
         setClerk(validity);
         setEducator(validity);
@@ -159,8 +158,6 @@ public class ActiveUser implements Serializable{
         this.activeStatus = activeStatus;
     }
 
- 
-
     public boolean isLearner() {
         return learner;
     }
@@ -240,7 +237,5 @@ public class ActiveUser implements Serializable{
     public void setSystemUserType(SchoolUserType systemUserType) {
         this.systemUserType = systemUserType;
     }
-    
-    
-    
+
 }

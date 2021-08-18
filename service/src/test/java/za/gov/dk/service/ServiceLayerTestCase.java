@@ -116,11 +116,6 @@ public class ServiceLayerTestCase {
 
     }
 
-    /* @Test
-     public void TestG() {
-     SystemAdminHelper.addAdmin(employeeRepository);
-
-     }**/
     @Test
     public void TestH() {
         SystemUserHelper.addSystemUser(userSystemRepository, employeeRepository, studentRepository);

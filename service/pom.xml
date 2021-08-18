@@ -6,16 +6,13 @@
         <groupId>za.gov.dk.SchoolSystem</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
     <groupId>za.gov.dk.service</groupId>
     <artifactId>service</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <name>service</name>
     <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
-
+    <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
             <groupId>za.gov.dk.persistence</groupId>

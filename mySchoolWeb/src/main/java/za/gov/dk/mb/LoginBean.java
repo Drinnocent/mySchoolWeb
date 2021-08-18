@@ -31,29 +31,29 @@ import za.gov.dk.service.StudentServiceLocal;
 @ManagedBean
 @RequestScope
 public class LoginBean extends BaseBean {
-    
+
     @Autowired
     private SchoolUserServiceLocal systemUserService;
     @Autowired
     private EmployeeServiceLocal employeeService;
     @Autowired
     private StudentServiceLocal studentService;
-    
+
     private String username;
     private String password;
     private String oldPassword;
     private String newPassword;
     private String confirmPassword;
-    
+
     private boolean loggedIn;
     private boolean loginPanel;
     private boolean changePasswordPanel;
     private boolean resetPasswordPanel;
-    
+
     private static final String LOGIN_PAGE = "/login.xhml";
-    
+
     private SchoolUser systemUser;
-    
+
     @PostConstruct
     public void init() {
         setLoginPanel(true);
@@ -113,10 +113,9 @@ public class LoginBean extends BaseBean {
             return false;
         }
 
-
         if (password.equals(user.getPassword()) && username.equals(user.getUsername())) {
             getActiveUser().setUsername(user.getUsername());
-             getActiveUser().setPersonType(user.getPersonType());
+            getActiveUser().setPersonType(user.getPersonType());
 
             StringBuilder userDisplayName = new StringBuilder("[");
             userDisplayName.append(" ");
@@ -127,36 +126,35 @@ public class LoginBean extends BaseBean {
             userDisplayName.append("]");
 
             getActiveUser().setDisplayName(userDisplayName);
-            
-           
-             getActiveUser().setFirstName(user.getFirstName());
-             getActiveUser().setIdentifier(user.getIdentifier());
-             getActiveUser().setLastName(user.getLastName());
-             getActiveUser().setSystemUserType(user.getSystemUserType());
-             getActiveUser().setActiveStatus(user.getSystemUserStatus());
-             getActiveUser().setUserLoginIndicator(Boolean.TRUE);
-            
-             getActiveUser().resetRole(false);
-             if(user.getPersonType().equals(PersonType.SYSTEM_USER)){
-                 if (user.getSystemUserType().equals(SchoolUserType.EMPLOYEE)) {
-                 if (emp.getEmployeeType().equals(EmployeeType.ADMIN)) {
-                     getActiveUser().setAdmin(true);
-                 }else if(emp.getEmployeeType().equals(EmployeeType.EDUCATOR)){
-                    getActiveUser().setEducator(true);
-                 }else if(emp.getEmployeeType().equals(EmployeeType.HOD)){
-                    getActiveUser().setHeadOfDepartment(true);
-                 }else if(emp.getEmployeeType().equals(EmployeeType.PRINCIPAL)){
-                 getActiveUser().setPrincipal(true);
-                 }
-                 
-                 }else if(user.getSystemUserType().equals(SchoolUserType.SYSTEM_ADMIN)){
-                 getActiveUser().setSystemadmin(true);
-                 }else if(user.getSystemUserType().equals(SchoolUserType.LEARNER)){
-                 getActiveUser().setLearner(true);
-                 }
-             return true;
+
+            getActiveUser().setFirstName(user.getFirstName());
+            getActiveUser().setLastName(user.getLastName());
+            getActiveUser().setSystemUserType(user.getSystemUserType());
+            getActiveUser().setActiveStatus(user.getSystemUserStatus());
+            getActiveUser().setUserLoginIndicator(Boolean.TRUE);
+            getActiveUser().setIdentifier(user.getIdentifier());
+
+            getActiveUser().resetRole(false);
+            if (user.getPersonType().equals(PersonType.SYSTEM_USER)) {
+                if (user.getSystemUserType().equals(SchoolUserType.EMPLOYEE)) {
+                    if (emp.getEmployeeType().equals(EmployeeType.ADMIN)) {
+                        getActiveUser().setAdmin(true);
+                    } else if (emp.getEmployeeType().equals(EmployeeType.EDUCATOR)) {
+                        getActiveUser().setEducator(true);
+                    } else if (emp.getEmployeeType().equals(EmployeeType.HOD)) {
+                        getActiveUser().setHeadOfDepartment(true);
+                    } else if (emp.getEmployeeType().equals(EmployeeType.PRINCIPAL)) {
+                        getActiveUser().setPrincipal(true);
+                    }
+
+                } else if (user.getSystemUserType().equals(SchoolUserType.SYSTEM_ADMIN)) {
+                    getActiveUser().setSystemadmin(true);
+                } else if (user.getSystemUserType().equals(SchoolUserType.LEARNER)) {
+                    getActiveUser().setLearner(true);
                 }
+                return true;
             }
+        }
         return false;
     }
 
@@ -168,85 +166,85 @@ public class LoginBean extends BaseBean {
             Logger.getLogger(LoginBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public String getUsername() {
         return username;
     }
-    
+
     public void setUsername(String username) {
         this.username = username;
     }
-    
+
     public String getPassword() {
         return password;
     }
-    
+
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public String getOldPassword() {
         return oldPassword;
     }
-    
+
     public void setOldPassword(String oldPassword) {
         this.oldPassword = oldPassword;
     }
-    
+
     public String getNewPassword() {
         return newPassword;
     }
-    
+
     public void setNewPassword(String newPassword) {
         this.newPassword = newPassword;
     }
-    
+
     public String getConfirmPassword() {
         return confirmPassword;
     }
-    
+
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
     }
-    
+
     public boolean isLoggedIn() {
         return loggedIn;
     }
-    
+
     public void setLoggedIn(boolean loggedIn) {
         this.loggedIn = loggedIn;
     }
-    
+
     public boolean isLoginPanel() {
         return loginPanel;
     }
-    
+
     public void setLoginPanel(boolean loginPanel) {
         this.loginPanel = loginPanel;
     }
-    
+
     public boolean isChangePasswordPanel() {
         return changePasswordPanel;
     }
-    
+
     public void setChangePasswordPanel(boolean changePasswordPanel) {
         this.changePasswordPanel = changePasswordPanel;
     }
-    
+
     public boolean isResetPasswordPanel() {
         return resetPasswordPanel;
     }
-    
+
     public void setResetPasswordPanel(boolean resetPasswordPanel) {
         this.resetPasswordPanel = resetPasswordPanel;
     }
-    
+
     public SchoolUser getSystemUser() {
         return systemUser;
     }
-    
+
     public void setSystemUser(SchoolUser systemUser) {
         this.systemUser = systemUser;
     }
-    
+
 }

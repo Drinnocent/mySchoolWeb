@@ -6,12 +6,14 @@
 package za.gov.dk.persistence;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import za.gov.dk.domain.Facility;
 
 /**
  *
  * @author S2028389
  */
+@Repository
 public interface FacilityRepository extends JpaRepository<Facility,Long>{
     
 }

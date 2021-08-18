@@ -19,7 +19,6 @@ import za.gov.dk.domain.School;
 import za.gov.dk.service.GradeServiceLocal;
 import za.gov.dk.service.SchoolServiceLocal;
 
-
 /**
  *
  * @author S2028389
@@ -55,6 +54,7 @@ public class GradeBean extends BaseBean {
             grade = new Grade();
             grade.setCreatedBy(getActiveUser().getFirstName() + " " + getActiveUser().getLastName());
             grade.setCreatedDate(new Date());
+            grade.setSchool(school);
 
             grades.add(0, grade);
         }

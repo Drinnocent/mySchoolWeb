@@ -25,13 +25,12 @@ import za.gov.dk.common.EmployeeType;
  *
  * @author S2028389
  */
-
 @Entity
 @Audited
 @Table(name = "employee")
 public class Employee extends Person{
     
-    @Column(name = "employeeId")
+    @Column(name = "employeeId",unique = true)
     private String employeeId;
     @Column(name = "sace_RegNumber")
     private String saceRegNumber;
@@ -102,6 +101,7 @@ public class Employee extends Person{
     public void setSchool(School school) {
         this.school = school;
     }
+
     
     
     

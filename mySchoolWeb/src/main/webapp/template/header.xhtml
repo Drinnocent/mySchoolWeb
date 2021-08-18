@@ -25,14 +25,14 @@
                         </h:outputFormat>
                     </b:row>
                     <b:row>
-                        <h:outputFormat value="">
-                            <f:param value="Status"/>
+                        <h:outputFormat value="[{0} {1}]">
+                            <f:param value="Status:"/>
                             <f:param value="#{headerBean.activeUser.activeStatus.toString()}"/>
                         </h:outputFormat>
                     </b:row>
                     <b:row>
-                        <h:outputFormat value="">
-                            <f:param value="Username"/>
+                        <h:outputFormat value="[{0} {1}]">
+                            <f:param value="Role:"/>
                             <f:param value="#{headerBean.activeUser.systemUserType.toString()}"/>
                         </h:outputFormat>
                     </b:row>                    

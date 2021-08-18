@@ -29,7 +29,7 @@ import org.hibernate.envers.Audited;
 @Table(name = "student")
 public class Student extends Person {
 
-    @Column(name = "studentNumber")
+    @Column(name = "studentNumber",unique = true)
     private String studentNumber;
     
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)

@@ -56,6 +56,7 @@ public class FacilityBean extends BaseBean {
             facility = new Facility();
              facility.setCreatedBy(getActiveUser().getIdentifier());
             facility.setCreatedDate(new Date());
+            facility.setSchool(school);
 
             facilities.add(0, facility);
         }

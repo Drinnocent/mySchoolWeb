@@ -24,7 +24,7 @@ import za.gov.dk.common.PersonType;
  *
  * @author S2028389
  */
-public class BaseBean extends SpringBeanAutowiringSupport implements Serializable{
+public class BaseBean extends SpringBeanAutowiringSupport implements Serializable {
 
     @ManagedProperty(value = "#{activeUser}")
     private ActiveUser activeUser;
@@ -33,10 +33,9 @@ public class BaseBean extends SpringBeanAutowiringSupport implements Serializabl
     private boolean visible;
     private boolean visiblePage;
     private List<String> errorCollectionMsg = new ArrayList<>();
-    
-      public void init()
-    {
-        FacesContextUtils.getRequiredWebApplicationContext(FacesContext.getCurrentInstance()).getAutowireCapableBeanFactory().autowireBean(this); 
+
+    public void init() {
+        FacesContextUtils.getRequiredWebApplicationContext(FacesContext.getCurrentInstance()).getAutowireCapableBeanFactory().autowireBean(this);
         FacesContext faceContext = FacesContext.getCurrentInstance(); //to clear the cache
         HttpServletResponse response = (HttpServletResponse) faceContext.getExternalContext().getResponse();
         response.setHeader("Pragma", "no-cache");
@@ -46,7 +45,6 @@ public class BaseBean extends SpringBeanAutowiringSupport implements Serializabl
         response.setHeader("Expire", "Mon, 8 Aug 2010 10:00:00 GMT");
 
     }
-
 
     public boolean isList() {
         return list;
@@ -77,24 +75,24 @@ public class BaseBean extends SpringBeanAutowiringSupport implements Serializabl
         this.setList(reset);
         return this;
     }
-    
-     public ActiveUser getActiveUser() {
-     return activeUser;
-     }
 
-     public void setActiveUser(ActiveUser activeUser) {
-     this.activeUser = activeUser;
-     }
+    public ActiveUser getActiveUser() {
+        return activeUser;
+    }
 
-     public void isUserLoggedIn(String redirectPage) {
-      if (!getActiveUser().isUserLoginIndicator()) {
-     try {
-     FacesContext.getCurrentInstance().getExternalContext().redirect(redirectPage);
-     } catch (IOException ex) {
-     Logger.getLogger(BaseBean.class.getName()).log(Level.SEVERE, null, ex);
-     }
-     }
-     }
+    public void setActiveUser(ActiveUser activeUser) {
+        this.activeUser = activeUser;
+    }
+
+    public void isUserLoggedIn(String redirectPage) {
+        if (!getActiveUser().isUserLoginIndicator()) {
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect(redirectPage);
+            } catch (IOException ex) {
+                Logger.getLogger(BaseBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
 
     public void redirect(String redirectPage) {
         try {
@@ -108,14 +106,14 @@ public class BaseBean extends SpringBeanAutowiringSupport implements Serializabl
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         if (session != null) {
             session.invalidate();
-             getActiveUser().setUserLoginIndicator(Boolean.FALSE);
+           // getActiveUser().setUserLoginIndicator(Boolean.FALSE);
         }
     }
 
     public boolean isUserSessionExpired() {
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         if (session == null) {
-              getActiveUser().setUserLoginIndicator(Boolean.FALSE);
+           // getActiveUser().setUserLoginIndicator(Boolean.FALSE);
             return true;
         }
         return false;
@@ -129,18 +127,18 @@ public class BaseBean extends SpringBeanAutowiringSupport implements Serializabl
         return this;
     }
 
-     public boolean isAdminUser() {
-     return getActiveUser().getPersonType().equals(PersonType.SYSTEM_USER);
-     }
+    public boolean isAdminUser() {
+        return getActiveUser().getPersonType().equals(PersonType.SYSTEM_USER);
+    }
 
-     public boolean isEmployee() {
-     return getActiveUser().getPersonType().equals(PersonType.EMPLOYEE);
-     }
+    public boolean isEmployee() {
+        return getActiveUser().getPersonType().equals(PersonType.EMPLOYEE);
+    }
 
-     public boolean isLearner() {
-     return getActiveUser().getPersonType().equals(PersonType.LEARNER);
-     }
-    
+    public boolean isLearner() {
+        return getActiveUser().getPersonType().equals(PersonType.LEARNER);
+    }
+
     public void reRoute(String page) {
         try {
             StringBuilder builder = new StringBuilder(page);
@@ -278,17 +276,17 @@ public class BaseBean extends SpringBeanAutowiringSupport implements Serializabl
         this.getErrorCollectionMsg().add(stringBuilder.toString());
 
     }
-    public String defaultRouter(String pg)
-    {
-        StringBuilder builder=new StringBuilder(pg);
+
+    public String defaultRouter(String pg) {
+        StringBuilder builder = new StringBuilder(pg);
         builder.append(".xhtml");
         return builder.toString();
     }
-    public String defaultRouting(String pg)
-    {
-        StringBuilder builder=new StringBuilder(pg);
+
+    public String defaultRouting(String pg) {
+        StringBuilder builder = new StringBuilder(pg);
         builder.append(".xhtml");
-        return builder.toString(); 
+        return builder.toString();
     }
 
     /**
@@ -326,5 +324,5 @@ public class BaseBean extends SpringBeanAutowiringSupport implements Serializabl
     public void setVisiblePage(boolean visiblePage) {
         this.visiblePage = visiblePage;
     }
-      
+
 }

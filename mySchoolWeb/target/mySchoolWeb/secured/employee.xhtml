@@ -69,8 +69,8 @@
                          <b:formGroup>
                             <p:outputLabel value="Employee Type"/>
                             <p:selectOneMenu value="#{employeeBean.employeed.employeeType}" label="Employee Type" converter="entityConverter" filter="false">
-                                <p:ajax update="@form" listener="#{employeeBean.employeeTypeListener()}"/>
-                            <f:selectItems value="#{employeeBean.employeeType}" var="empType" itemLabel="#{empType.toString()}" itemValue="#{empType}"/>
+                                <p:ajax update="@form" listener="#{employeeBean.employeeTypeListener}"/>
+                                <f:selectItems value="#{employeeBean.employeeType}" var="empType" itemLabel="#{empType.toString()}" itemValue="#{empType}"/>
                         </p:selectOneMenu>
                         </b:formGroup>
                          <b:inputText rendered="#{employeeBean.visible}" value="#{employeeBean.employeed.saceRegNumber}" label="Registration Number" field-size="md"/>

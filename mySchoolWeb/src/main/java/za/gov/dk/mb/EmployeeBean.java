@@ -77,28 +77,24 @@ public class EmployeeBean extends BaseBean {
         this.resetView(false).setAdd(true);
         if (emp != null) {
             emp.setUpdatedBy(getActiveUser().getFirstName() + " " + getActiveUser().getLastName());
-            emp.setUpdatedBy("admin");
             emp.setUpdatedDate(new Date());
             employeed = emp;
 
         } else {
             employeed = new Employee();
             employeed.setCreatedBy(getActiveUser().getIdentifier());
-            employeed.setCreatedBy("admin");
             employeed.setCreatedDate(new Date());
             employeed.setSchool(school);
             employeed.setPersonType(PersonType.EMPLOYEE);
-
+          
             Address physicalAdress = new Address();
             physicalAdress.setAddressType(AddressType.RESIDENTIAL);
             physicalAdress.setCreatedBy(getActiveUser().getIdentifier());
-            physicalAdress.setCreatedBy("admin");
             physicalAdress.setCreatedDate(new Date());
 
             Address postalAdress = new Address();
             postalAdress.setAddressType(AddressType.POSTAL);
             postalAdress.setCreatedBy(getActiveUser().getIdentifier());
-            physicalAdress.setCreatedBy("admin");
             postalAdress.setCreatedDate(new Date());
 
             employeed.getAddressList().add(physicalAdress);

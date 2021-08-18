@@ -10,7 +10,6 @@ package za.gov.dk.common;
  * @author S2028389
  */
 public enum EmployeeType {
-
     GENERAL_WORKER("General Staff"),
     EDUCATOR("Educator"),
     PRINCIPAL("Principal"),
@@ -24,6 +23,10 @@ public enum EmployeeType {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+    
     @Override
     public String toString() {
         return name;

@@ -20,6 +20,10 @@ public enum SchoolUserType {
         this.displayname = displayName;
     }
 
+    public String getDisplayname() {
+        return displayname;
+    }
+
     public String toString() {
         return this.displayname;
     }

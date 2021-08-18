@@ -1,6 +1,5 @@
 za\gov\dk\service\FacilityHelper.class
 za\gov\dk\service\ServiceLayerTestCase.class
-za\gov\dk\service\SystemAdminHelper.class
 za\gov\dk\service\EmployeeHelper.class
 za\gov\dk\service\GradeHelper.class
 za\gov\dk\service\SubjectHelper.class

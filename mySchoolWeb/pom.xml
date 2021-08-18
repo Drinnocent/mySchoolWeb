@@ -48,7 +48,6 @@
             <groupId>org.primefaces.extensions</groupId>
             <artifactId>primefaces-extensions</artifactId>
         </dependency>
-        
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>           
@@ -73,7 +72,6 @@
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
         </dependency>
-        
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -106,22 +104,9 @@
             <groupId>org.reactivestreams</groupId>
             <artifactId>reactive-streams</artifactId>
         </dependency> 
-        
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>javax.mail-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>za.gov.dk.common</groupId>
-            <artifactId>common</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>za.gov.dk.domain</groupId>
-            <artifactId>domain</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <type>jar</type>
         </dependency>
     </dependencies>
     <build>

@@ -50,8 +50,6 @@ public class EmployeeHelper {
         contact1.setTellphone_number("031412547");
         employee1.setContactDetail(contact1);
 
-        //address
-        // address2;
         Address addr1 = new Address();
         addr1.setCreatedBy("Luke");
         addr1.setCreatedDate(new Date());

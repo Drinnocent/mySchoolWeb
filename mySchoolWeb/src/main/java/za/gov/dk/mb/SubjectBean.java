@@ -32,10 +32,9 @@ public class SubjectBean extends BaseBean {
     private SubjectServiceLocal subjectService;
     @Autowired
     private SchoolServiceLocal schoolService;
-   
+
     private List<Subject> subjects = new ArrayList<>();
-    private List<Employee> ed=new ArrayList<>();
-   
+    private List<Employee> ed = new ArrayList<>();
 
     private Subject subject;
     private School school;
@@ -53,13 +52,14 @@ public class SubjectBean extends BaseBean {
     public void addOrUpdate(Subject sub) {
         this.resetView(false).setAdd(true);
         if (sub != null) {
-             sub.setUpdatedBy(getActiveUser().getIdentifier());
+            sub.setUpdatedBy(getActiveUser().getIdentifier());
             sub.setUpdatedDate(new Date());
             subject = sub;
         } else {
             subject = new Subject();
             subject.setCreatedBy(getActiveUser().getIdentifier());
             subject.setCreatedDate(new Date());
+            subject.setSchool(school);
 
             subjects.add(0, subject);
         }
@@ -105,6 +105,7 @@ public class SubjectBean extends BaseBean {
     public void setSubjects(List<Subject> subjects) {
         this.subjects = subjects;
     }
+
     public Subject getSubject() {
         return subject;
     }
@@ -127,5 +128,5 @@ public class SubjectBean extends BaseBean {
 
     public void setEducator(Employee educator) {
         this.educator = educator;
-    } 
+    }
 }
